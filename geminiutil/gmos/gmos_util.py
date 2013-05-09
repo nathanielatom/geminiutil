@@ -4,6 +4,14 @@ from astropy import units as u
 gmos_data_dir = os.path.join(os.path.dirname(__file__), 'data')
 default_gmos_configuration_fname = os.path.join(gmos_data_dir, 'gmos_configuration.yml')
 
+
+def parse_readout_direction(detector_readout):
+    """ Parameter: detector_readout - string to be parsed for direction component
+    Returns: a string for direction component - e.g. "EEV 2037-06-03, left" parses to "left".
+    """
+    return detector_readout.split()[-1]
+
+
 class MissingFITSInformation(ValueError):
     pass
 
